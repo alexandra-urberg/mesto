@@ -1,0 +1,19 @@
+.header {
+    max-width: 880px;
+    display: flex;
+    align-items: flex-start;
+    margin: 0 auto;
+    border-bottom: 1px solid #545454;
+}
+
+@media screen and (min-width: 401px) and (max-width: 1109px) {
+    .header {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 400px) {
+    .header {
+        width: 100%;
+    }
+}
