@@ -1,7 +1,7 @@
 
 let openButton = document.querySelector('#popup__open-button'); //кнопка, вызывающая popup окно
 let popup = document.querySelector('.popup'); // блок popup
-let closeCross = document.querySelector('.popup_close-button'); //закрывющая кнопка//крест блок popup
+let closeCross = document.querySelector('.close-button'); //закрывющая кнопка//крест блок popup
 let addButton = document.querySelector('.popup__save-button'); //кнопка, сохраняющая информацию из input
 
 // Ф-ция открытия/закрытия popup окна
