@@ -5,7 +5,7 @@
 
 ### Обзор
 
-* [Ссылка на выполненный проект]
+* [Ссылка на выполненный проект](https://alexandra-stepanova.github.io/mesto/)
 
 **Figma**
 
