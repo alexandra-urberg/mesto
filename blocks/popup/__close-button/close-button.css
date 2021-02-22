@@ -1,11 +1,11 @@
 .close-button {
     position: absolute;
-    background-image: url(../../images/Close\ Icon.svg);
+    
     background-repeat: no-repeat;
     background-position: center;
     width: 40px;
     height: 40px;
-    background-color: transparent;
+    background-color:;
     border: none;
     outline: none;
     top: -40px;
