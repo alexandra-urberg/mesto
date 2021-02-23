@@ -12,7 +12,7 @@
 
 @media screen and (min-width: 571px) and (max-width: 800px) {
     .profile__conteiner {
-        margin: 0 auto;
+        margin-left: 30px;
     }
 }
 @media screen and (min-width: 320px) and (max-width: 570px) {
@@ -20,6 +20,6 @@
         grid-template-columns: fit-content(189px) fit-content(18px);
         column-gap: 10px;
         row-gap: 10px;
-        margin: 0 auto;
+        margin-left: 30px;
     }
 }

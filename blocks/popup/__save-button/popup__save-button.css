@@ -9,6 +9,13 @@
     font-size: 18px;
     line-height: 21px;
     color: #fff;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.popup__save-button:hover {
+    opacity: 0.8;
+    font-size: 21px;
 }
 
 @media screen and (min-width: 320px) and (max-width: 500px) {
@@ -18,5 +25,9 @@
 
         font-size: 14px;
         line-height: 26px;
+    }
+
+    .popup__save-button:hover {
+        font-size: 17px;
     }
 }

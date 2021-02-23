@@ -1,0 +1,27 @@
+.element__button-like {
+    border: 0;
+    background-image: url(../../../images/Vector-heart1.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    cursor: pointer;
+    width: 22px;
+    height: 19px;
+    transition: 0.3s;
+    background-color: transparent;
+    margin-right: 5px;
+    margin-bottom: 1px;
+    transition: 0.1s ease;
+}
+
+.element__button-like:hover {
+    opacity: 0.5;
+    width: 24px;
+    height: 21px;
+}
+
+.element__button-like:active,
+.element__button-like:focus {
+    background-image: url(../../../images/Union-dark.svg);
+    outline: none;
+}

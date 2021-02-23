@@ -14,78 +14,76 @@
             <img src="./images/logo.svg" alt="логотип MESTO" class="header__logo">
         </header>  
         <main class="main">
-            <section class="profile margin-profile">
+            <section class="profile main__profile">
                 <img src="images/image.jpg" alt="портрет Жака-Ив Кусто" class="profile__avatar">
-                <div class="profile__block">
                     <div class="profile__conteiner">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button id="popup__open-button" class="edit-button button" type="button"></button>
+                        <button id="popup__open-button" class="button button_open-popup" type="button"></button>
                         <p class="profile__job">Исследователь океана</p>
                     </div> 
-                </div>
-                <button type="submit" class="add-button button"></button>
+                <button type="button" class="button button_open-elements"></button>
             </section>
             <section class="elements">
                 <ul class="elements__container">
                     <li class="element">
                         <img src="images/kirill-pershin-1088404-unsplash.jpg" alt="церковь в горах" class="element__image">
                         <div class="element__block">
-                            <p class="element__quote">Карачаевск</p>
-                            <div><button class="button-like button"></button></div>
+                            <h2 class="element__quote">Карачаевск</h2>
+                            <button type="button" class="element__button-like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img src="images/kirill-pershin-1404681-unsplash.jpg" alt="вид на гору при закате" class="element__image">
                         <div class="element__block">
-                            <p class="element__quote">Гора Эльбрус</p>
-                            <div><button class="button-like"></button></div>
+                            <h2 class="element__quote">Гора Эльбрус</h2>
+                            <button type="button" class="element__button-like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img src="images/kirill-pershin-1556355-unsplash.jpg" alt="заснежанная гора" class="element__image">
                         <div class="element__block">
-                            <p class="element__quote">Домбай</p>
-                            <div><button class="button-like"></button></div>
+                            <h2 class="element__quote">Домбай</h2>
+                            <button type="button" class="element__button-like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img src="images/kirill-pershin-1404681-unsplash.jpg" alt="вид на гору при закате" class="element__image">
                         <div class="element__block">
-                            <p class="element__quote">Гора Эльбрус</p>
-                            <div><button class="button-like"></button></div>
+                            <h2 class="element__quote">Гора Эльбрус</h2>
+                            <button type="button" class="element__button-like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img src="images/kirill-pershin-1556355-unsplash.jpg" alt="заснежанная гора" class="element__image">
                         <div class="element__block">
-                            <p class="element__quote">Домбай</p>
-                            <div><button class="button-like"></button></div>
+                            <h2 class="element__quote">Домбай</h2>
+                            <button type="button" class="element__button-like"></button>
                         </div>
                     </li>
                     <li class="element">
                         <img src="images/kirill-pershin-1088404-unsplash.jpg" alt="церковь в горах" class="element__image">
                         <div class="element__block">
-                            <p class="element__quote">Карачаевск</p>
-                            <div><button class="button-like"></button></div>
+                            <h2 class="element__quote">Карачаевск</h2>
+                            <button type="button" class="element__button-like"></button>
                         </div>
                     </li>
                 </ul>
             </section>
         </main>
         <footer class="footer">
-            <h2 class="footer__name">&#169;2020 Mesto Russia</h2>
+            <p class="footer__name">&#169;2020 Mesto Russia</p>
         </footer>
-        <secton class="popup">
+        <div class="popup">
             <div class="popup__content">
-                <button type="button" class="close-button button"></button>
+                <button type="button" class="button button_close-popup"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form-container">
+                <form name="form" action="#" method="POST" class="popup__form-container">
                     <input type="text" required minlength="2" maxlength="30" name="name" id="input-name" class="popup__input" placeholder="Жак-Ив Кусто">
                     <input type="text" required minlength="2" maxlength="30" name="job" id="input-job" class="popup__input" placeholder="Исследователь океана">
-                    <button type="submit" class="popup__save-button popup__opacity">Сохранить</button>
+                    <button type="submit" class="popup__save-button">Сохранить</button>
                 </form>
             </div>  
-        </secton>
+        </div>
         <script src="js/index.js"></script>
     </body>
 </html>
