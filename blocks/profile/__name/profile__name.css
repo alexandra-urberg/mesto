@@ -12,20 +12,11 @@
     overflow: hidden;
 }
 
-@media screen and (min-width: 641px) and (max-width: 800px) {
+@media screen and (min-width: 320px) and (max-width: 800px) {
     .profile__name {
         max-width: 189px;
         margin: 0 auto;
         font-size: 27px;
         line-height: 32.7px; 
-    }
-}
-
-@media screen and (min-width: 320px) and (max-width: 640px) {
-    .profile__name {
-        max-width: 189px;
-        margin: 0 auto;
-        font-size: 27px;
-        line-height: 32.7px;
     }
 }

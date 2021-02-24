@@ -1,4 +1,4 @@
-.button_open-popup {   
+.button_open_popup {   
     background-image: url(../../../images/Vector.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -10,32 +10,20 @@
     background-color: transparent;
     padding: 0;
     margin-bottom: 7px;
-    transition: 0.2s ease;
 }
 
-.button_open-popup:hover {
-    background-size: 14px 14px;
-}
 @media screen and (min-width: 641px) and (max-width: 800px) {
-    .button_open-popup {
+    .button_open_popup {
         width: 20px;
         height: 20px;
         background-size: 11px 11px;
     }
-
-    .button_open-popup:hover {
-        background-size: 13px 13px;
-    }
 }
 
 @media screen and (min-width: 320px) and (max-width: 640px) {
-    .button_open-popup {
+    .button_open_popup {
         width: 18px;
         height: 18px;
         background-size: 10px 10px;
-    }
-
-    .button_open-popup:hover {
-        background-size: 12px 12px;
     }
 }

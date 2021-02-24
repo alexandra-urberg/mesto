@@ -20,6 +20,6 @@
         grid-template-columns: fit-content(189px) fit-content(18px);
         column-gap: 10px;
         row-gap: 10px;
-        margin-left: 30px;
+        margin: 0 auto;
     }
 }

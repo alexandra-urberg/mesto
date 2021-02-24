@@ -15,8 +15,6 @@
 
 .element__button-like:hover {
     opacity: 0.5;
-    width: 24px;
-    height: 21px;
 }
 
 .element__button-like:active,
