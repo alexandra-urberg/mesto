@@ -1,6 +1,6 @@
 let openButton = document.querySelector('#popup__open-button'); //кнопка, вызывающая popup окно
 let popup = document.querySelector('.popup'); // блок popup
-let closeCross = document.querySelector('.button_close_popup'); //закрывющая кнопка//крест блок popup
+let closeCross = document.querySelector('.popup__close-button'); //закрывющая кнопка//крест блок popup
 let profileName = document.querySelector('.profile__name'); // место ввода имени
 let profileJob = document.querySelector('.profile__job'); // место вводы "работы"
 let nameInput = document.querySelector('#input-name'); //input "name"

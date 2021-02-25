@@ -12,6 +12,7 @@
     transition: 0.2s ease;
     cursor: pointer;
     outline: none;
+    border: none;
 }
 
 .popup__save-button:hover {
