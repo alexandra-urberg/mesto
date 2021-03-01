@@ -1,4 +1,4 @@
-.profile__open-btn {
+.profile__add-button {
     background-image: url(../../../images/Vector-add.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -14,12 +14,12 @@
     transition: 0.2s ease;
 }
 
-.profile__open-btn:hover {
+.profile__add-button:hover {
     opacity: 0.6;
 }
 
 @media screen and (min-width: 320px) and (max-width: 800px) {
-    .profile__open-btn {
+    .profile__add-button {
         width: 100%;
         height: 50px;
         background-size: 16px 16px;
