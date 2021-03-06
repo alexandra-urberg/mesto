@@ -18,72 +18,50 @@
                 <img src="images/image.jpg" alt="портрет Жака-Ив Кусто" class="profile__avatar">
                     <div class="profile__conteiner">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button id="popup__open-button" class="profile__open-button" type="button"></button>
+                        <button id="popup-profile__open-button" class="profile__open-button" type="button"></button>
                         <p class="profile__job">Исследователь океана</p>
                     </div> 
-                <button type="button" class="profile__add-button"></button>
+                <button id="popup-image__open-button" class="profile__add-button" type="button"></button>
             </section>
             <section class="elements">
                 <ul class="elements__container">
-                    <li class="element">
-                        <img src="images/kirill-pershin-1088404-unsplash.jpg" alt="церковь в горах" class="element__image">
-                        <div class="element__block">
-                            <h2 class="element__quote">Карачаевск</h2>
-                            <button type="button" class="element__button-like"></button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img src="images/kirill-pershin-1404681-unsplash.jpg" alt="вид на гору при закате" class="element__image">
-                        <div class="element__block">
-                            <h2 class="element__quote">Гора Эльбрус</h2>
-                            <button type="button" class="element__button-like"></button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img src="images/kirill-pershin-1556355-unsplash.jpg" alt="заснежанная гора" class="element__image">
-                        <div class="element__block">
-                            <h2 class="element__quote">Домбай</h2>
-                            <button type="button" class="element__button-like"></button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img src="images/kirill-pershin-1404681-unsplash.jpg" alt="вид на гору при закате" class="element__image">
-                        <div class="element__block">
-                            <h2 class="element__quote">Гора Эльбрус</h2>
-                            <button type="button" class="element__button-like"></button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img src="images/kirill-pershin-1556355-unsplash.jpg" alt="заснежанная гора" class="element__image">
-                        <div class="element__block">
-                            <h2 class="element__quote">Домбай</h2>
-                            <button type="button" class="element__button-like"></button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img src="images/kirill-pershin-1088404-unsplash.jpg" alt="церковь в горах" class="element__image">
-                        <div class="element__block">
-                            <h2 class="element__quote">Карачаевск</h2>
-                            <button type="button" class="element__button-like"></button>
-                        </div>
-                    </li>
                 </ul>
             </section>
         </main>
         <footer class="footer">
             <p class="footer__name">&#169;2020 Mesto Russia</p>
         </footer>
-        <div class="popup">
+        <div id="popup-profile" class="popup">
             <div class="popup__content">
-                <button type="button" class="popup__close-button"></button>
+                <button class="popup__close-button popup__button-cross" type="button"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form name="form" action="#" method="POST" class="popup__form-container">
+                <form name="form" action="#" method="POST" class="popup__form-container popup-profile__form">
                     <input type="text" required minlength="2" maxlength="30" name="name" id="input-name" class="popup__input" placeholder="Жак-Ив Кусто">
                     <input type="text" required minlength="2" maxlength="30" name="job" id="input-job" class="popup__input" placeholder="Исследователь океана">
-                    <button type="submit" class="popup__save-button">Сохранить</button>
+                    <button type="submit" class="popup__save-button popup__submit-button">Сохранить</button>
                 </form>
             </div>  
         </div>
+        <div id="popup-image" class="popup">
+            <div class="popup__content">
+                <button class="popup__close-button popup__button-crossik" type="button"></button>
+                <h2 class="popup__title">Новое место</h2>
+                <form name="form" action="#" method="POST" class="popup__form-container popup-image__form">
+                    <input type="text" required minlength="2" maxlength="30" name="name" id="input-name" class="popup__input popup__input-title" placeholder="Название">
+                    <input type="url" required minlength="2" name="link" class="popup__input popup__input-img" placeholder="Ссылка на картинку">
+                    <button type="submit" class="popup__save-button">Создать</button>
+                </form>
+            </div>  
+        </div>
+        <template class="element__template">
+            <li class="element element__card">
+                <img src="" alt="фото" class="element__image">
+                <div class="element__block">
+                    <h2 class="element__quote">jdfvjhdjvdf</h2>
+                    <button type="button" class="element__button-like"></button>
+                </div>
+            </li>
+        </template>
         <script src="js/index.js"></script>
     </body>
 </html>
