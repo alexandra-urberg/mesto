@@ -34,20 +34,20 @@ const profileName = document.querySelector('.profile__name'); // место вв
 const profileJob = document.querySelector('.profile__job'); // место вводы "работы"
 const nameInput = document.querySelector('#input-name'); //input "name"
 const jobInput = document.querySelector('#input-job'); // input "job"
-const popupForm = document.querySelector('.popup-profile__form'); //форма блока PopUp Profile
+const popupForm = document.querySelector('.popup__form'); //форма блока PopUp Profile
 // Popup Image ///
 const openPopupImageBtn = document.querySelector('#popup-image__open-button'); //кнопка открывающая блок Popup Image
 const popupImage = document.querySelector('#popup-image'); // блок Popup Image
 const closePopupImageBtn = popupImage.querySelector('.popup__button-crossik'); // кнопка закрывающая блок Popup Image
 /// Template ///
 const popupImageContainer = document.querySelector('#template__container'); // переменная в которую будем добавлять карточки
-const popupImageForm = document.querySelector('.popup-image__form'); // переменная куда будет вноиться информаци о картинках и ссылки
+const popupImageForm = document.querySelector('.popup__image-form'); // переменная куда будет вноиться информаци о картинках и ссылки
 const templateImage = document.querySelector('#template'); // блок template
 /// Popup image ///
 const imagePopup = document.querySelector('#image'); // блок image (увеличение фотографий)
 const image = imagePopup.querySelector('.image'); // увеличенная фотография
 const imageTitle = imagePopup.querySelector('.image__tittle'); // подпись фотографии
-const imageCloseButton = imagePopup.querySelector('.image__button'); //кнопка закрывающая фотографию
+const imageCloseButton = imagePopup.querySelector('.popup__image-button'); //кнопка закрывающая фотографию
 
 
 /// Ф-ция открытия/закрытия popup окна ///

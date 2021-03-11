@@ -35,7 +35,7 @@
             <div class="popup__content">
                 <button class="popup__close-button popup__button-cross" type="button"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form name="form" action="#" method="POST" class="popup__form-container popup-profile__form">
+                <form name="form" action="#" method="POST" class="popup__form-container popup__form">
                     <input type="text" required minlength="2" maxlength="30" name="name" id="input-name" class="popup__input" placeholder="Жак-Ив Кусто">
                     <input type="text" required minlength="2" maxlength="30" name="job" id="input-job" class="popup__input" placeholder="Исследователь океана">
                     <button type="submit" class="popup__save-button popup__submit-button">Сохранить</button>
@@ -46,16 +46,16 @@
             <div class="popup__content">
                 <button class="popup__close-button popup__button-crossik" type="button"></button>
                 <h2 class="popup__title">Новое место</h2>
-                <form name="form" action="#" method="POST" class="popup__form-container popup-image__form">
+                <form name="form" action="#" method="POST" class="popup__form-container popup__image-form">
                     <input type="text" required minlength="2" maxlength="30" name="title" id="popup__input-title" class="popup__input" placeholder="Название">
                     <input type="url" required minlength="2" name="link" id="popup__input-img" class="popup__input" placeholder="Ссылка на картинку">
                     <button type="submit" class="popup__save-button">Создать</button>
                 </form>
             </div>  
         </div>
-        <div id="image" class="popup popup__opacity">
+        <div id="image" class="popup popup-opacity">
             <div class="popup__image-container">
-                <button class="popup__close-button image__button" type="button"></button>
+                <button class="popup__close-button popup__image-button" type="button"></button>
                 <img class="image" src="#" alt="фото">
                 <h2 class="image__tittle"></h2>  
             </div>
