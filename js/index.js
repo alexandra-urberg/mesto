@@ -46,7 +46,7 @@ const templateImage = document.querySelector('#template'); // блок template
 /// Popup image ///
 const imagePopup = document.querySelector('#image'); // блок image (увеличение фотографий)
 const image = imagePopup.querySelector('.image'); // увеличенная фотография
-const imageTitle = imagePopup.querySelector('.image__tittle'); // подпись фотографии
+const imageTitle = imagePopup.querySelector('.image-tittle'); // подпись фотографии
 const imageCloseButton = imagePopup.querySelector('.popup__image-button'); //кнопка закрывающая фотографию
 
 
