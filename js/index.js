@@ -39,6 +39,8 @@ const popupForm = document.querySelector('.popup__form'); //форма блок�
 const openPopupImageBtn = document.querySelector('#popup-image__open-button'); //кнопка открывающая блок Popup Image
 const popupImage = document.querySelector('#popup-image'); // блок Popup Image
 const closePopupImageBtn = popupImage.querySelector('.popup__button-crossik'); // кнопка закрывающая блок Popup Image
+const popupInputTitle = document.querySelector('#popup__input-title');
+const popupInputImage = document.querySelector('#popup__input-img');
 /// Template ///
 const popupImageContainer = document.querySelector('#template__container'); // переменная в которую будем добавлять карточки
 const popupImageForm = document.querySelector('.popup__image-form'); // переменная куда будет вноиться информаци о картинках и ссылки
@@ -107,9 +109,6 @@ createInitCards();
 /// Добавление новой карточки /// 
 function addNewCards(evt) {
     evt.preventDefault();
-    const popupInputTitle = popupImageForm.querySelector('#popup__input-title');
-    const popupInputImage = popupImageForm.querySelector('#popup__input-img');
-
     const templateTitle = popupInputTitle.value;
     const templateImageElement = popupInputImage.value;
 
