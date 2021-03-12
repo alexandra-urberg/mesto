@@ -89,6 +89,7 @@ function createElementCard(title, image) {
     const templateImg = newItem.querySelector('.element__image');
     const templateTitle = newItem.querySelector('.element__quote');
     templateTitle.textContent = title;
+    templateImg.alt = title;
     templateImg.src = image;
     deleteElementCard(newItem);
     addLike(newItem);
@@ -126,6 +127,7 @@ function openFullSizeImage(block) {
 
     templateImg.addEventListener(('click'), function() {
         image.src = templateImg.src;
+        image.alt = templateTitle.textContent;
         imageTitle.textContent = templateTitle.textContent;
         popUpToggle(imagePopup);
     });
