@@ -57,7 +57,15 @@ function popUpToggle(block) {
     block.classList.toggle('popup_is-opened');
 }
 
-//Ф-ция добавления информации из input 
+////Ф-ция добавления информации из блока Profile в input Popup Profile
+function showInformation() {
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
+
+    popUpToggle(popupProfileBlock);
+}
+
+//Ф-ция добавления информации из input в Popup Profile
 //отменяем отправку формы по умолчанию
 function addInformation (evt) {
     evt.preventDefault();
