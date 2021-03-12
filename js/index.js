@@ -57,14 +57,6 @@ function popUpToggle(block) {
     block.classList.toggle('popup_is-opened');
 }
 
-////Ф-ция добавления информации из блока Profile в input Popup Profile
-function showInformation() {
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileJob.textContent;
-
-    popUpToggle(popupProfileBlock);
-}
-
 //Ф-ция добавления информации из input в Popup Profile
 //отменяем отправку формы по умолчанию
 function addInformation (evt) {
@@ -141,9 +133,12 @@ function openFullSizeImage(block) {
     });
 }
 
+/// ОГРОМНОЕ СПАСБО ЗА ПОДСКАЗКУ!!!!!!!!!!!!!!
 /// Обработчкики закрытия/открытия Popup-ов ///
 openPopupProfileBtn.addEventListener('click', function() {
     popUpToggle(popupProfileBlock);
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileJob.textContent;
 });
 
 closePopupBtn.addEventListener('click', function() {
