@@ -133,7 +133,7 @@ function openFullSizeImage(block) {
     });
 }
 
-/// ОГРОМНОЕ СПАСБО ЗА ПОДСКАЗКУ!!!!!!!!!!!!!!
+/// ОГРОМНОЕ СПАСБО ЗА ПОДСКАЗКУ!!!!!!!!!!!!
 /// Обработчкики закрытия/открытия Popup-ов ///
 openPopupProfileBtn.addEventListener('click', function() {
     popUpToggle(popupProfileBlock);
