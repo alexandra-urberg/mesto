@@ -42,6 +42,7 @@ const closePopupImageBtn = popupImage.querySelector('.popup__button-crossik'); /
 const popupInputTitle = document.querySelector('#popup__input-title');
 const popupInputImage = document.querySelector('#popup__input-img');
 const popupImageForm = document.querySelector('#popup__image-form'); // переменная куда будет вноиться информаци о картинках и ссылки
+const submitButton = popupImage.querySelector('#popup-image__submit-btn'); 
 /// Template ///
 const popupImageContainer = document.querySelector('#template__container'); // переменная в которую будем добавлять карточки
 const templateImage = document.querySelector('#template'); // блок template
@@ -50,22 +51,31 @@ const imagePopup = document.querySelector('#image'); // блок image (увел
 const image = imagePopup.querySelector('.image'); // увеличенная фотография
 const imageTitle = imagePopup.querySelector('.image-tittle'); // подпись фотографии
 const imageCloseButton = imagePopup.querySelector('.popup__image-button'); //кнопка закрывающая фотографию
+//закрытие popup по нажатию кнопки Esc
+const closeByEsc = (event) => {
+    const deleteClass = document.querySelector('.popup_is-opened');
+    if(event.key === "Escape") {
+        closePopup(deleteClass);
+    }   
+}
 
 // Ф-ция открытия/закрытия popup окна
 function showPopup(block) {
     block.classList.add('popup_is-opened');
+    document.addEventListener('keydown', closeByEsc);
 }
 
 function closePopup(block) {
     block.classList.remove('popup_is-opened');
+    document.removeEventListener('keydown', closeByEsc);
 }
 
 //Ф-ция добавления информации из input в Popup Profile
-function addInformation (evt) { //отменяем отправку формы по умолчанию
-    evt.preventDefault();
+function addInformation (evt) {
+    evt.preventDefault(); ////отменяем отправку формы по умолчанию
     profileName.textContent = nameInput.value; //текст в profileName является значением, занесенным в nameInput
     profileJob.textContent = jobInput.value; //текст в profileJob является значением, занесенным в nameJob
-    showPopup(popupProfileBlock); // проверяем параметр функцией popUpToggle
+    closePopup(popupProfileBlock); // проверяем параметр функцией popUpToggle
 }
 
 /// Ф-ция удаления карточек ///
@@ -111,16 +121,14 @@ createInitCards();
 
 /// Добавление новой карточки /// 
 function addNewCards(evt) {
-    evt.preventDefault();
-    const templateTitle = popupInputTitle.value;
-    const templateImageElement = popupInputImage.value;
-
-    const card = createElementCard(templateTitle, templateImageElement);
-    showPopup(popupImage);
-    closePopup(popupImage);
+    evt.preventDefault()
+    const card = createElementCard(popupInputTitle.value, popupInputImage.value);
     addElementCard(card);
-    templateImageElement.value = '';
-    templateTitle.value = '';
+    closePopup(popupImage);
+    popupInputTitle.value = ''; //обнуление input name
+    popupInputImage.value = ''; //обнуление input link
+    submitButton.classList.add('popup__button_disabled'); //вводим кнопку submit в состояние disabled после обнуления 
+    submitButton.setAttribute('disabled', true); //вводим кнопку submit в состояние disabled после обнуления 
 }
 
 /// Функция увеличения картинки при клике на нее ///
@@ -142,15 +150,6 @@ openPopupProfileBtn.addEventListener('click', function() {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
 });
-
-/// Обработчкики закрытия/открытия Popup-ов через кнопку Esc///
-document.addEventListener('keydown', (event) => {
-    if(event.key === "Escape") {
-        closePopup(popupImage);
-        closePopup(popupProfileBlock);
-        closePopup(imagePopup);
-    }
-})
 
 closePopupBtn.addEventListener('click', () => {
     closePopup(popupProfileBlock);
