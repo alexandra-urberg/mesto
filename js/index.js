@@ -25,8 +25,8 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
-
 /// Popup Profile ///
+const popUp = document.querySelectorAll('.popup'); //блоки popup
 const openPopupProfileBtn = document.querySelector('#popup-profile__open-button'); //кнопка, вызывающая Popup Profile окно
 const popupProfileBlock = document.querySelector('#popup-profile'); //блок Popup Profile
 const closePopupBtn = popupProfileBlock.querySelector('.popup__button-cross'); //закрывющая кнопка/крест блок Popup Profile
@@ -34,16 +34,16 @@ const profileName = document.querySelector('.profile__name'); // место вв
 const profileJob = document.querySelector('.profile__job'); // место вводы "работы"
 const nameInput = document.querySelector('#input-name'); //input "name"
 const jobInput = document.querySelector('#input-job'); // input "job"
-const popupForm = document.querySelector('.popup__form'); //форма блока PopUp Profile
+const popupForm = document.querySelector('#popup__form'); //форма блока PopUp Profile
 // Popup Image ///
 const openPopupImageBtn = document.querySelector('#popup-image__open-button'); //кнопка открывающая блок Popup Image
 const popupImage = document.querySelector('#popup-image'); // блок Popup Image
 const closePopupImageBtn = popupImage.querySelector('.popup__button-crossik'); // кнопка закрывающая блок Popup Image
 const popupInputTitle = document.querySelector('#popup__input-title');
 const popupInputImage = document.querySelector('#popup__input-img');
+const popupImageForm = document.querySelector('#popup__image-form'); // переменная куда будет вноиться информаци о картинках и ссылки
 /// Template ///
 const popupImageContainer = document.querySelector('#template__container'); // переменная в которую будем добавлять карточки
-const popupImageForm = document.querySelector('.popup__image-form'); // переменная куда будет вноиться информаци о картинках и ссылки
 const templateImage = document.querySelector('#template'); // блок template
 /// Popup image ///
 const imagePopup = document.querySelector('#image'); // блок image (увеличение фотографий)
@@ -51,19 +51,21 @@ const image = imagePopup.querySelector('.image'); // увеличенная фо
 const imageTitle = imagePopup.querySelector('.image-tittle'); // подпись фотографии
 const imageCloseButton = imagePopup.querySelector('.popup__image-button'); //кнопка закрывающая фотографию
 
+// Ф-ция открытия/закрытия popup окна
+function showPopup(block) {
+    block.classList.add('popup_is-opened');
+}
 
-/// Ф-ция открытия/закрытия popup окна ///
-function popUpToggle(block) {
-    block.classList.toggle('popup_is-opened');
+function closePopup(block) {
+    block.classList.remove('popup_is-opened');
 }
 
 //Ф-ция добавления информации из input в Popup Profile
-//отменяем отправку формы по умолчанию
-function addInformation (evt) {
+function addInformation (evt) { //отменяем отправку формы по умолчанию
     evt.preventDefault();
     profileName.textContent = nameInput.value; //текст в profileName является значением, занесенным в nameInput
     profileJob.textContent = jobInput.value; //текст в profileJob является значением, занесенным в nameJob
-    popUpToggle(popupProfileBlock); // проверяем параметр функцией popUpToggle
+    showPopup(popupProfileBlock); // проверяем параметр функцией popUpToggle
 }
 
 /// Ф-ция удаления карточек ///
@@ -114,7 +116,8 @@ function addNewCards(evt) {
     const templateImageElement = popupInputImage.value;
 
     const card = createElementCard(templateTitle, templateImageElement);
-    popUpToggle(popupImage);
+    showPopup(popupImage);
+    closePopup(popupImage);
     addElementCard(card);
     templateImageElement.value = '';
     templateTitle.value = '';
@@ -129,33 +132,42 @@ function openFullSizeImage(block) {
         image.src = templateImg.src;
         image.alt = templateTitle.textContent;
         imageTitle.textContent = templateTitle.textContent;
-        popUpToggle(imagePopup);
+        showPopup(imagePopup);
     });
 }
 
-/// ОГРОМНОЕ СПАСБО ЗА ПОДСКАЗКУ!!!!!!!!!!!!
 /// Обработчкики закрытия/открытия Popup-ов ///
 openPopupProfileBtn.addEventListener('click', function() {
-    popUpToggle(popupProfileBlock);
+    showPopup(popupProfileBlock);
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
 });
 
-closePopupBtn.addEventListener('click', function() {
-    popUpToggle(popupProfileBlock);
+/// Обработчкики закрытия/открытия Popup-ов через кнопку Esc///
+document.addEventListener('keydown', (event) => {
+    if(event.key === "Escape") {
+        closePopup(popupImage);
+        closePopup(popupProfileBlock);
+        closePopup(imagePopup);
+    }
+})
+
+closePopupBtn.addEventListener('click', () => {
+    closePopup(popupProfileBlock);
+    popupForm.reset();
 });
 
-openPopupImageBtn.addEventListener('click',function() {
-    popUpToggle(popupImage);
-});
+openPopupImageBtn.addEventListener('click', () => showPopup(popupImage)); 
 
-closePopupImageBtn.addEventListener('click', function() {
-    popUpToggle(popupImage);
+imageCloseButton.addEventListener(('click'), () => closePopup(imagePopup));
+
+closePopupImageBtn.addEventListener('click', () => {
+    closePopup(popupImage);
+    popupImageForm.reset();
 }); 
 
-imageCloseButton.addEventListener(('click'), function() {
-    popUpToggle(imagePopup);
-});
+//закрытие popup через overlay
+popUp.forEach((block) => block.addEventListener('click', (evt) => closePopup(evt.target)));
 
 /// Обработчики submit длая Popup-ов /// 
 popupForm.addEventListener('submit', addInformation);
