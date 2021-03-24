@@ -25,8 +25,10 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
-/// Popup Profile ///
+
 const popUp = document.querySelectorAll('.popup'); //блоки popup
+const submitButton = document.querySelector('.popup__save-button'); //кнопка submith всех popup
+/// Popup Profile ///
 const openPopupProfileBtn = document.querySelector('#popup-profile__open-button'); //кнопка, вызывающая Popup Profile окно
 const popupProfileBlock = document.querySelector('#popup-profile'); //блок Popup Profile
 const closePopupBtn = popupProfileBlock.querySelector('.popup__button-cross'); //закрывющая кнопка/крест блок Popup Profile
@@ -42,7 +44,6 @@ const closePopupImageBtn = popupImage.querySelector('.popup__button-crossik'); /
 const popupInputTitle = document.querySelector('#popup__input-title');
 const popupInputImage = document.querySelector('#popup__input-img');
 const popupImageForm = document.querySelector('#popup__image-form'); // переменная куда будет вноиться информаци о картинках и ссылки
-const submitButton = popupImage.querySelector('#popup-image__submit-btn'); 
 /// Template ///
 const popupImageContainer = document.querySelector('#template__container'); // переменная в которую будем добавлять карточки
 const templateImage = document.querySelector('#template'); // блок template
@@ -51,7 +52,8 @@ const imagePopup = document.querySelector('#image'); // блок image (увел
 const image = imagePopup.querySelector('.image'); // увеличенная фотография
 const imageTitle = imagePopup.querySelector('.image-tittle'); // подпись фотографии
 const imageCloseButton = imagePopup.querySelector('.popup__image-button'); //кнопка закрывающая фотографию
-//закрытие popup по нажатию кнопки Esc
+
+/// Закрытие popup по нажатию кнопки Esc ///
 const closeByEsc = (event) => {
     const deleteClass = document.querySelector('.popup_is-opened');
     if(event.key === "Escape") {
@@ -59,7 +61,7 @@ const closeByEsc = (event) => {
     }   
 }
 
-// Ф-ция открытия/закрытия popup окна
+// Ф-ция открытия/закрытия popup окна ///
 function showPopup(block) {
     block.classList.add('popup_is-opened');
     document.addEventListener('keydown', closeByEsc);
@@ -70,12 +72,14 @@ function closePopup(block) {
     document.removeEventListener('keydown', closeByEsc);
 }
 
-//Ф-ция добавления информации из input в Popup Profile
+/// Ф-ция добавления информации из input в Popup Profile ///
 function addInformation (evt) {
     evt.preventDefault(); ////отменяем отправку формы по умолчанию
     profileName.textContent = nameInput.value; //текст в profileName является значением, занесенным в nameInput
     profileJob.textContent = jobInput.value; //текст в profileJob является значением, занесенным в nameJob
     closePopup(popupProfileBlock); // проверяем параметр функцией popUpToggle
+    submitButton.classList.add('popup__button_disabled'); //вводим кнопку submit в состояние disabled после обнуления 
+    submitButton.setAttribute('disabled', true); //вводим кнопку submit в состояние disabled после обнуления 
 }
 
 /// Ф-ция удаления карточек ///
@@ -119,7 +123,7 @@ function createInitCards() {
 
 createInitCards();
 
-/// Добавление новой карточки /// 
+/// Добавление новой карточки ///
 function addNewCards(evt) {
     evt.preventDefault()
     const card = createElementCard(popupInputTitle.value, popupInputImage.value);
