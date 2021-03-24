@@ -27,7 +27,6 @@ const initialCards = [
 ];
 
 const popUp = document.querySelectorAll('.popup'); //блоки popup
-const submitButton = document.querySelector('.popup__save-button'); //кнопка submith всех popup
 /// Popup Profile ///
 const openPopupProfileBtn = document.querySelector('#popup-profile__open-button'); //кнопка, вызывающая Popup Profile окно
 const popupProfileBlock = document.querySelector('#popup-profile'); //блок Popup Profile
@@ -37,6 +36,7 @@ const profileJob = document.querySelector('.profile__job'); // место вво
 const nameInput = document.querySelector('#input-name'); //input "name"
 const jobInput = document.querySelector('#input-job'); // input "job"
 const popupForm = document.querySelector('#popup__form'); //форма блока PopUp Profile
+const popupFormsubmitButton = popupProfileBlock.querySelector('.popup__submit-button'); //кнопка submith всех popup
 // Popup Image ///
 const openPopupImageBtn = document.querySelector('#popup-image__open-button'); //кнопка открывающая блок Popup Image
 const popupImage = document.querySelector('#popup-image'); // блок Popup Image
@@ -44,6 +44,7 @@ const closePopupImageBtn = popupImage.querySelector('.popup__button-crossik'); /
 const popupInputTitle = document.querySelector('#popup__input-title');
 const popupInputImage = document.querySelector('#popup__input-img');
 const popupImageForm = document.querySelector('#popup__image-form'); // переменная куда будет вноиться информаци о картинках и ссылки
+const submitButton = popupImage.querySelector('#popup-image__submit-btn'); //кнопка submith всех popup
 /// Template ///
 const popupImageContainer = document.querySelector('#template__container'); // переменная в которую будем добавлять карточки
 const templateImage = document.querySelector('#template'); // блок template
@@ -78,8 +79,8 @@ function addInformation (evt) {
     profileName.textContent = nameInput.value; //текст в profileName является значением, занесенным в nameInput
     profileJob.textContent = jobInput.value; //текст в profileJob является значением, занесенным в nameJob
     closePopup(popupProfileBlock); // проверяем параметр функцией popUpToggle
-    submitButton.classList.add('popup__button_disabled'); //вводим кнопку submit в состояние disabled после обнуления 
-    submitButton.setAttribute('disabled', true); //вводим кнопку submit в состояние disabled после обнуления 
+    popupFormsubmitButton.classList.add('popup__button_disabled'); //вводим кнопку submit в состояние disabled после обнуления 
+    popupFormsubmitButton.setAttribute('disabled', true); //вводим кнопку submit в состояние disabled после обнуления 
 }
 
 /// Ф-ция удаления карточек ///
@@ -157,7 +158,6 @@ openPopupProfileBtn.addEventListener('click', function() {
 
 closePopupBtn.addEventListener('click', () => {
     closePopup(popupProfileBlock);
-    popupForm.reset();
 });
 
 openPopupImageBtn.addEventListener('click', () => showPopup(popupImage)); 
