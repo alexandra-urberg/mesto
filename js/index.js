@@ -26,7 +26,7 @@ const initialCards = [
     }
 ];
 
-const popUp = document.querySelectorAll('.popup'); //блоки popup
+const popUps = document.querySelectorAll('.popup'); //блоки popup
 /// Popup Profile ///
 const openPopupProfileBtn = document.querySelector('#popup-profile__open-button'); //кнопка, вызывающая Popup Profile окно
 const popupProfileBlock = document.querySelector('#popup-profile'); //блок Popup Profile
@@ -72,6 +72,18 @@ function closePopup(block) {
     block.classList.remove('popup_is-opened');
     document.removeEventListener('keydown', closeByEsc);
 }
+
+//Универсальная ф-ция для закртия popup по кнопке и overlay
+popUps.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+        if(evt.target.classList.contains('popup_is-opened')) {
+            closePopup(popup)
+        }
+        if(evt.target.classList.contains('popup__close-button')) {
+            closePopup(popup)
+        }
+    })
+})
 
 /// Ф-ция добавления информации из input в Popup Profile ///
 function addInformation (evt) {
@@ -130,8 +142,7 @@ function addNewCards(evt) {
     const card = createElementCard(popupInputTitle.value, popupInputImage.value);
     addElementCard(card);
     closePopup(popupImage);
-    popupInputTitle.value = ''; //обнуление input name
-    popupInputImage.value = ''; //обнуление input link
+    popupImageForm.reset()
     submitButton.classList.add('popup__button_disabled'); //вводим кнопку submit в состояние disabled после обнуления 
     submitButton.setAttribute('disabled', true); //вводим кнопку submit в состояние disabled после обнуления 
 }
@@ -156,21 +167,7 @@ openPopupProfileBtn.addEventListener('click', function() {
     jobInput.value = profileJob.textContent;
 });
 
-closePopupBtn.addEventListener('click', () => {
-    closePopup(popupProfileBlock);
-});
-
 openPopupImageBtn.addEventListener('click', () => showPopup(popupImage)); 
-
-imageCloseButton.addEventListener(('click'), () => closePopup(imagePopup));
-
-closePopupImageBtn.addEventListener('click', () => {
-    closePopup(popupImage);
-    popupImageForm.reset();
-}); 
-
-//закрытие popup через overlay
-popUp.forEach((block) => block.addEventListener('click', (evt) => closePopup(evt.target)));
 
 /// Обработчики submit длая Popup-ов /// 
 popupForm.addEventListener('submit', addInformation);
