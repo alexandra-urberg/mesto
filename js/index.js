@@ -1,30 +1,6 @@
-// Вводные данные для elements ///
-const initialCards = [
-    { 
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    { 
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    { 
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    { 
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    { 
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    { 
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+import { Card } from './card/card.js'
+import { FormValidator } from './validate.js'
+import { initialCards, validSelectors } from './utilites.js'
 
 const popUps = document.querySelectorAll('.popup'); //блоки popup
 /// Popup Profile ///
@@ -45,33 +21,32 @@ const popupImageForm = document.querySelector('#popup__image-form'); // пере
 const submitButton = popupImage.querySelector('#popup-image__submit-btn'); //кнопка submith всех popup
 /// Template ///
 const popupImageContainer = document.querySelector('#template__container'); // переменная в которую будем добавлять карточки
-const templateImage = document.querySelector('#template'); // блок template
 /// Popup image ///
 const imagePopup = document.querySelector('#image'); // блок image (увеличение фотографий)
 const image = imagePopup.querySelector('.image'); // увеличенная фотография
 const imageTitle = imagePopup.querySelector('.image-tittle'); // подпись фотографии
 
-/// Закрытие popup по нажатию кнопки Esc ///
-const closeByEsc = (event) => {
+const valid = new FormValidator(validSelectors); ////переменная с присвоенным экземпляром класса Card FormValidator
+valid.enableValidation();
+
+const closeByEsc = (event) => { /// Закрытие popup по нажатию кнопки Esc ///
     const deleteClass = document.querySelector('.popup_is-opened');
     if(event.key === "Escape") {
         closePopup(deleteClass);
     }   
 }
 
-// Ф-ция открытия/закрытия popup окна ///
-function showPopup(block) {
+const showPopup = (block) => { // Ф-ция открытия popup окна ///
     block.classList.add('popup_is-opened');
     document.addEventListener('keydown', closeByEsc);
 }
 
-function closePopup(block) {
+const closePopup = (block) => { // Ф-ция закрытия popup окна ///
     block.classList.remove('popup_is-opened');
     document.removeEventListener('keydown', closeByEsc);
 }
 
-//Универсальная ф-ция для закртия popup по кнопке и overlay
-popUps.forEach((popup) => {
+popUps.forEach((popup) => { //Универсальная ф-ция для закртия popup по кнопке и overlay
     popup.addEventListener('click', (evt) => {
         if(evt.target.classList.contains('popup_is-opened')) {
             closePopup(popup)
@@ -82,8 +57,7 @@ popUps.forEach((popup) => {
     })
 })
 
-/// Ф-ция добавления информации из input в Popup Profile ///
-function addInformation (evt) {
+const addInformation = (evt) => { /// Ф-ция добавления информации из input в Popup Profile ///
     evt.preventDefault(); ////отменяем отправку формы по умолчанию
     profileName.textContent = nameInput.value; //текст в profileName является значением, занесенным в nameInput
     profileJob.textContent = jobInput.value; //текст в profileJob является значением, занесенным в nameJob
@@ -92,51 +66,24 @@ function addInformation (evt) {
     popupFormsubmitButton.setAttribute('disabled', true); //вводим кнопку submit в состояние disabled после обнуления 
 }
 
-/// Ф-ция удаления карточек ///
-function deleteElementCard(element) {
-    const deleteButton = element.querySelector('.element__trash');
-    deleteButton.addEventListener('click', () => element.remove());
-}
-
-/// Функция для like-button ///
-function addLike(element) {
-    const likeButtomTemplate = element.querySelector('.element__button-like');
-    likeButtomTemplate.addEventListener('click', () => likeButtomTemplate.classList.toggle('element__button-like_active'));
-}
-
-/// Добавление карточки в DOM ///
-function addElementCard(element) {
+const addElementCard = (element) => { /// Добавление карточки в DOM ///
     popupImageContainer.prepend(element);
 }
 
-/// Ф-ция создающиая новые карточки с фотографиями ///
-function createElementCard(title, image) {
-    const newItem = templateImage.content.querySelector('.template__card').cloneNode(true); //клонируем элементы из  блока teamplate
-    const templateImg = newItem.querySelector('.element__image');
-    const templateTitle = newItem.querySelector('.element__quote');
-    templateTitle.textContent = title;
-    templateImg.alt = title;
-    templateImg.src = image;
-    deleteElementCard(newItem);
-    addLike(newItem);
-    openFullSizeImage(newItem);
-    return newItem;
-}
+const newCard = (title, image) => new Card(title, image, openFullSizeImage).createElementCard(); //переменная с присвоенным экземпляром класса Card
 
-/// Рендер на страницу ///
-function createInitCards() {
+const createInitCards = () => { /// функция создающая карточки ///
     initialCards.forEach((item) => {
-        const card = createElementCard(item.name, item.link);
+        const card = newCard(item.name, item.link);
         addElementCard(card); 
     });
 }
 
 createInitCards();
 
-/// Добавление новой карточки ///
-function addNewCards(evt) {
+const addNewCards = (evt) => { /// Добавление новой карточки ///
     evt.preventDefault()
-    const card = createElementCard(popupInputTitle.value, popupInputImage.value);
+    const card = newCard(popupInputTitle.value, popupInputImage.value);
     addElementCard(card);
     closePopup(popupImage);
     popupImageForm.reset()
@@ -144,12 +91,11 @@ function addNewCards(evt) {
     submitButton.setAttribute('disabled', true); //вводим кнопку submit в состояние disabled после обнуления 
 }
 
-/// Функция увеличения картинки при клике на нее ///
-function openFullSizeImage(block) {
+function openFullSizeImage(block) { /// Функция увеличения картинки при клике на нее ///
     const templateImg = block.querySelector('.element__image');
     const templateTitle = block.querySelector('.element__quote');
 
-    templateImg.addEventListener(('click'), function() {
+    templateImg.addEventListener(('click'), () => {
         image.src = templateImg.src;
         image.alt = templateTitle.textContent;
         imageTitle.textContent = templateTitle.textContent;
