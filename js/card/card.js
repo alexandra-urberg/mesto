@@ -1,13 +1,13 @@
 export class Card {
-    constructor(name, link, openFullSizeImage) {
+    constructor(name, link, openFullSizeImage, template) {
         this._name = name;
         this._link = link;
         this._openFullSizeImage = openFullSizeImage;
+        this._template = template;
     }
 
     createElementCard() {
-        const newItem = document
-        .querySelector('#template')
+        const newItem = this._template
         .content
         .querySelector('.template__card')
         .cloneNode(true); //клонируем элементы из  блока teamplate
