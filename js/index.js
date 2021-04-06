@@ -20,6 +20,7 @@ const popupInputImage = document.querySelector('#popup__input-img');
 const popupImageForm = document.querySelector('#popup__image-form'); // переменная куда будет вноиться информаци о картинках и ссылки
 const submitButton = popupImage.querySelector('#popup-image__submit-btn'); //кнопка submith всех popup
 /// Template ///
+const template = document.querySelector('#template');
 const popupImageContainer = document.querySelector('#template__container'); // переменная в которую будем добавлять карточки
 /// Popup image ///
 const imagePopup = document.querySelector('#image'); // блок image (увеличение фотографий)
@@ -70,7 +71,7 @@ const addElementCard = (element) => { /// Добавление карточки 
     popupImageContainer.prepend(element);
 }
 
-const newCard = (title, image) => new Card(title, image, openFullSizeImage).createElementCard(); //переменная с присвоенным экземпляром класса Card
+const newCard = (title, image) => new Card(title, image, openFullSizeImage, template).createElementCard(); //переменная с присвоенным экземпляром класса Card
 
 const createInitCards = () => { /// функция создающая карточки ///
     initialCards.forEach((item) => {
