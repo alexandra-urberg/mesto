@@ -20,15 +20,15 @@ export class FormValidator {
     this._disabledSubmitButton.disabled = true; 
   } 
   
-  _showInputError(inputElement, errorMessage) { ////метод добавляющая класс с ошибкой
-    const errorElement = this._popupForms.querySelector(`.${inputElement.id}-error`);
+  _showInputError(formElement, inputElement, errorMessage) { ////метод добавляющая класс с ошибкой
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._validSelectors.inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._validSelectors.errorClass);
   }
 
-  _hideInputError(inputElement) { ////метод удаляющий класс с ошибкой
-    const errorElement = this._popupForms.querySelector(`.${inputElement.id}-error`);
+  _hideInputError(formElement, inputElement) { ////метод удаляющий класс с ошибкой
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this._validSelectors.inputErrorClass);
     errorElement.classList.remove(this._validSelectors.errorClass);
     errorElement.textContent = '';
