@@ -1,6 +1,6 @@
 import { Card } from './card/card.js'
-import { FormValidator } from './validate.js'
-import { initialCards, validSelectors } from './utilites.js'
+import { FormValidator } from './formvalidator.js'
+import { initialCards, validSelectors} from './utilites.js'
 
 const popUps = document.querySelectorAll('.popup'); //блоки popup
 /// Popup Profile ///
@@ -11,28 +11,26 @@ const profileJob = document.querySelector('.profile__job'); // место вво
 const nameInput = document.querySelector('#input-name'); //input "name"
 const jobInput = document.querySelector('#input-job'); // input "job"
 const popupForm = document.querySelector('#popup__form'); //форма блока PopUp Profile
-const popupFormsubmitButton = popupProfileBlock.querySelector('.popup__submit-button'); //кнопка submith всех popup
+const popupFormValid = document.forms.popUpprofile;
 // Popup Image ///
 const openPopupImageBtn = document.querySelector('#popup-image__open-button'); //кнопка открывающая блок Popup Image
 const popupImage = document.querySelector('#popup-image'); // блок Popup Image
 const popupInputTitle = document.querySelector('#popup__input-title');
 const popupInputImage = document.querySelector('#popup__input-img');
 const popupImageForm = document.querySelector('#popup__image-form'); // переменная куда будет вноиться информаци о картинках и ссылки
-const submitButton = popupImage.querySelector('#popup-image__submit-btn'); //кнопка submith всех popup
+const popupImageFormValid = document.forms.popUpImage;
 /// Template ///
 const template = document.querySelector('#template');
 const popupImageContainer = document.querySelector('#template__container'); // переменная в которую будем добавлять карточки
-/// Popup image ///
-const imagePopup = document.querySelector('#image'); // блок image (увеличение фотографий)
-const image = imagePopup.querySelector('.image'); // увеличенная фотография
-const imageTitle = imagePopup.querySelector('.image-tittle'); // подпись фотографии
 
-const valid = new FormValidator(validSelectors); ////переменная с присвоенным экземпляром класса Card FormValidator
-valid.enableValidation();
+const validNewCards = new FormValidator(validSelectors, popupImageFormValid); 
+validNewCards.enableValidation();
+const validProfileBlock = new FormValidator(validSelectors, popupFormValid);
+validProfileBlock.enableValidation();
 
 const closeByEsc = (event) => { /// Закрытие popup по нажатию кнопки Esc ///
-    const deleteClass = document.querySelector('.popup_is-opened');
     if(event.key === "Escape") {
+        const deleteClass = document.querySelector('.popup_is-opened');
         closePopup(deleteClass);
     }   
 }
@@ -63,19 +61,18 @@ const addInformation = (evt) => { /// Ф-ция добавления инфор�
     profileName.textContent = nameInput.value; //текст в profileName является значением, занесенным в nameInput
     profileJob.textContent = jobInput.value; //текст в profileJob является значением, занесенным в nameJob
     closePopup(popupProfileBlock); // проверяем параметр функцией popUpToggle
-    popupFormsubmitButton.classList.add('popup__button_disabled'); //вводим кнопку submit в состояние disabled после обнуления 
-    popupFormsubmitButton.setAttribute('disabled', true); //вводим кнопку submit в состояние disabled после обнуления 
+    validProfileBlock.disableSubmitButton();
 }
 
 const addElementCard = (element) => { /// Добавление карточки в DOM ///
     popupImageContainer.prepend(element);
 }
 
-const newCard = (title, image) => new Card(title, image, openFullSizeImage, template).createElementCard(); //переменная с присвоенным экземпляром класса Card
+const createImageCard = (title, image) => new Card(title, image, showPopup, template).createElementCard(); //переменная с присвоенным экземпляром класса Card
 
 const createInitCards = () => { /// функция создающая карточки ///
     initialCards.forEach((item) => {
-        const card = newCard(item.name, item.link);
+        const card = createImageCard(item.name, item.link);
         addElementCard(card); 
     });
 }
@@ -84,24 +81,11 @@ createInitCards();
 
 const addNewCards = (evt) => { /// Добавление новой карточки ///
     evt.preventDefault()
-    const card = newCard(popupInputTitle.value, popupInputImage.value);
+    const card = createImageCard(popupInputTitle.value, popupInputImage.value);
     addElementCard(card);
     closePopup(popupImage);
-    popupImageForm.reset()
-    submitButton.classList.add('popup__button_disabled'); //вводим кнопку submit в состояние disabled после обнуления 
-    submitButton.setAttribute('disabled', true); //вводим кнопку submit в состояние disabled после обнуления 
-}
-
-function openFullSizeImage(block) { /// Функция увеличения картинки при клике на нее ///
-    const templateImg = block.querySelector('.element__image');
-    const templateTitle = block.querySelector('.element__quote');
-
-    templateImg.addEventListener(('click'), () => {
-        image.src = templateImg.src;
-        image.alt = templateTitle.textContent;
-        imageTitle.textContent = templateTitle.textContent;
-        showPopup(imagePopup);
-    });
+    popupImageForm.reset();
+    validNewCards.disableSubmitButton();
 }
 
 /// Обработчкики закрытия/открытия Popup-ов ///
