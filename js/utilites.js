@@ -26,7 +26,7 @@ const initialCards = [
 ];
 
 const validSelectors = {
-  formSelector: '.popup__form-container', //формы блоков popup
+  formSelector: document.querySelectorAll('.popup__form-container'), //формы блоков popup
   inputSelector: '.popup__input', // инпуты блоков popup
   submitButtonSelector: '.popup__save-button', // кноки submit/type popup
   inactiveButtonClass: 'popup__button_disabled', //класс добавляемый в кнопку submit/type popup для того чтобы кнопка не работала
