@@ -2,24 +2,10 @@ export class FormValidator {
   constructor(validSelectors, popupForms) {
     this._validSelectors = validSelectors;
     this._popupForms = popupForms;
-    this._disabledSubmitButton = this._popupForms.querySelector(this._validSelectors.submitButtonSelector);
+    this._disabledSubmitButton = this._popupForms.querySelector(this._validSelectors.submitButtonSelector)
+    this._popupForms = this._validSelectors.formSelector;
   }
 
-  enableValidation() { ////метод добавление обработчиков всем формам
-    const formList = Array.from(this._popupForms.querySelectorAll(this._validSelectors.formSelector));
-    formList.forEach((formElement) => {
-      formElement.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-      });
-      this._setEventListeners(formElement);
-    });
-  }
-
-  disableSubmitButton() { //вводим кнопки submit в состояние disabled после обнуления 
-    this._disabledSubmitButton.classList.add(this._validSelectors.inactiveButtonClass);
-    this._disabledSubmitButton.disabled = true; 
-  } 
-  
   _showInputError(formElement, inputElement, errorMessage) { ////метод добавляющая класс с ошибкой
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._validSelectors.inputErrorClass);
@@ -68,5 +54,20 @@ export class FormValidator {
       buttonElement.classList.remove(this._validSelectors.inactiveButtonClass);
       buttonElement.removeAttribute('disabled');
     }
+  }
+
+  disableSubmitButton() { //вводим кнопки submit в состояние disabled после обнуления 
+    this._disabledSubmitButton.classList.add(this._validSelectors.inactiveButtonClass);
+    this._disabledSubmitButton.disabled = true; 
+  } 
+
+  enableValidation() { ////метод добавление обработчиков всем формам
+    const formList = Array.from(this._popupForms);
+    formList.forEach((formElement) => {
+      formElement.addEventListener('submit', (evt) => {
+       evt.preventDefault();
+      });
+      this._setEventListeners(formElement);
+    });
   }
 }
