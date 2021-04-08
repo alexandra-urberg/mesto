@@ -11,29 +11,21 @@ const profileJob = document.querySelector('.profile__job'); // место вво
 const nameInput = document.querySelector('#input-name'); //input "name"
 const jobInput = document.querySelector('#input-job'); // input "job"
 const popupForm = document.querySelector('#popup__form'); //форма блока PopUp Profile
-const popupFormValid = document.forms.popUpprofile;
 // Popup Image ///
 const openPopupImageBtn = document.querySelector('#popup-image__open-button'); //кнопка открывающая блок Popup Image
 const popupImage = document.querySelector('#popup-image'); // блок Popup Image
-const popupInputTitle = document.querySelector('#popup__input-title');
-const popupInputImage = document.querySelector('#popup__input-img');
+const popupInputTitle = document.querySelector('#popup__input-title'); // input для сохраниени описания картинки
+const popupInputImage = document.querySelector('#popup__input-img'); // input для сохранения ссылки на картинку
 const popupImageForm = document.querySelector('#popup__image-form'); // переменная куда будет вноиться информаци о картинках и ссылки
-const popupImageFormValid = document.forms.popUpImage;
 /// Template ///
-const template = document.querySelector('#template');
+const template = document.querySelector('#template'); //template 
 const popupImageContainer = document.querySelector('#template__container'); // переменная в которую будем добавлять карточки
 
-const validNewCards = new FormValidator(validSelectors, popupImageFormValid); 
+// Вызывыем класс FormValidator с параметрами форм доя popupProfile и popupImage ///
+const validNewCards = new FormValidator(validSelectors, popupImageForm); 
+const validProfileBlock = new FormValidator(validSelectors, popupForm);
 validNewCards.enableValidation();
-const validProfileBlock = new FormValidator(validSelectors, popupFormValid);
 validProfileBlock.enableValidation();
-
-const closeByEsc = (event) => { /// Закрытие popup по нажатию кнопки Esc ///
-    if(event.key === "Escape") {
-        const deleteClass = document.querySelector('.popup_is-opened');
-        closePopup(deleteClass);
-    }   
-}
 
 const showPopup = (block) => { // Ф-ция открытия popup окна ///
     block.classList.add('popup_is-opened');
@@ -56,12 +48,19 @@ popUps.forEach((popup) => { //Универсальная ф-ция для зак
     })
 })
 
+const closeByEsc = (event) => { /// Закрытие popup по нажатию кнопки Esc ///
+    if(event.key === "Escape") {
+        const deleteClass = document.querySelector('.popup_is-opened');
+        closePopup(deleteClass);
+    }   
+}
+
 const addInformation = (evt) => { /// Ф-ция добавления информации из input в Popup Profile ///
     evt.preventDefault(); ////отменяем отправку формы по умолчанию
     profileName.textContent = nameInput.value; //текст в profileName является значением, занесенным в nameInput
     profileJob.textContent = jobInput.value; //текст в profileJob является значением, занесенным в nameJob
     closePopup(popupProfileBlock); // проверяем параметр функцией popUpToggle
-    validProfileBlock.disableSubmitButton();
+    validProfileBlock.disableSubmitButton(); //кнопка submit в состояние disabled после обнуления 
 }
 
 const addElementCard = (element) => { /// Добавление карточки в DOM ///
@@ -84,8 +83,8 @@ const addNewCards = (evt) => { /// Добавление новой карточ�
     const card = createImageCard(popupInputTitle.value, popupInputImage.value);
     addElementCard(card);
     closePopup(popupImage);
-    popupImageForm.reset();
-    validNewCards.disableSubmitButton();
+    popupImageForm.reset(); // обнуляем значения формы после добавления карточки
+    validNewCards.disableSubmitButton(); //кнопка submit в состояние disabled после обнуления 
 }
 
 /// Обработчкики закрытия/открытия Popup-ов ///
