@@ -20,6 +20,10 @@ const popupImageForm = document.querySelector('#popup__image-form'); // пере
 /// Template ///
 const template = document.querySelector('#template'); //template 
 const popupImageContainer = document.querySelector('#template__container'); // переменная в которую будем добавлять карточки
+/// Full-size picture ///
+const imagePopup = document.querySelector('#image'); // блок image (увеличение фотографий)
+const image = imagePopup.querySelector('.image'); // увеличенная фотография
+const imageTitle = imagePopup.querySelector('.image-tittle'); // подпись фотографии
 
 // Вызывыем класс FormValidator с параметрами форм доя popupProfile и popupImage ///
 const validNewCards = new FormValidator(validSelectors, popupImageForm); 
@@ -67,7 +71,7 @@ const addElementCard = (element) => { /// Добавление карточки 
     popupImageContainer.prepend(element);
 }
 
-const createImageCard = (title, image) => new Card(title, image, showPopup, template).createElementCard(); //переменная с присвоенным экземпляром класса Card
+const createImageCard = (title, image) => new Card(title, image, openFullSizeImage, template).createElementCard(); //переменная с присвоенным экземпляром класса Card
 
 const createInitCards = () => { /// функция создающая карточки ///
     initialCards.forEach((item) => {
@@ -85,6 +89,13 @@ const addNewCards = (evt) => { /// Добавление новой карточ�
     closePopup(popupImage);
     popupImageForm.reset(); // обнуляем значения формы после добавления карточки
     validNewCards.disableSubmitButton(); //кнопка submit в состояние disabled после обнуления 
+}
+
+ function openFullSizeImage(link, title) {
+    image.alt = title.textContent;
+    image.src = link.src;
+    imageTitle.textContent = title.textContent;
+    this._showPopup(imagePopup);
 }
 
 /// Обработчкики закрытия/открытия Popup-ов ///
