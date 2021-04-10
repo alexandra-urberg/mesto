@@ -95,7 +95,7 @@ const addNewCards = (evt) => { /// Добавление новой карточ�
     image.alt = title.textContent;
     image.src = link.src;
     imageTitle.textContent = title.textContent;
-    this._showPopup(imagePopup);
+    showPopup(imagePopup);
 }
 
 /// Обработчкики закрытия/открытия Popup-ов ///
