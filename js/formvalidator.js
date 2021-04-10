@@ -49,6 +49,7 @@ export class FormValidator {
   }
 
   _setEventListeners() { //метод добавление обработчиков всем полям форм
+    this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
