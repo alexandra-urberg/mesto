@@ -83,7 +83,7 @@ const createInitCards = () => { /// функция создающая карто
 createInitCards();
 
 const addNewCards = (evt) => { /// Добавление новой карточки ///
-    evt.preventDefault()
+    evt.preventDefault();
     const card = createImageCard(popupInputTitle.value, popupInputImage.value);
     addElementCard(card);
     closePopup(popupImage);
