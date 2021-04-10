@@ -1,8 +1,8 @@
 export class Card {
-    constructor(name, link, showPopup, template) {
+    constructor(name, link, openFullSizeImage, template) {
         this._name = name;
         this._link = link;
-        this._showPopup = showPopup;
+        this._openFullSizeImage = openFullSizeImage;
         this._template = template;
 
     }
@@ -33,17 +33,6 @@ export class Card {
     _addLike(element) {  /// метод для like-button ///
         const likeButtomTemplate = element.querySelector('.element__button-like');
         likeButtomTemplate.addEventListener('click', () => likeButtomTemplate.classList.toggle('element__button-like_active'));
-    }
-    
-    _openFullSizeImage(link, title) {
-        const imagePopup = document.querySelector('#image'); // блок image (увеличение фотографий)
-        const image = imagePopup.querySelector('.image'); // увеличенная фотография
-        const imageTitle = imagePopup.querySelector('.image-tittle'); // подпись фотографии
-
-        image.alt = title.textContent;
-        image.src = link.src;
-        imageTitle.textContent = title.textContent;
-        this._showPopup(imagePopup);
     }
 }
 
