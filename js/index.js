@@ -64,7 +64,6 @@ const addInformation = (evt) => { /// Ф-ция добавления инфор�
     profileName.textContent = nameInput.value; //текст в profileName является значением, занесенным в nameInput
     profileJob.textContent = jobInput.value; //текст в profileJob является значением, занесенным в nameJob
     closePopup(popupProfileBlock); // проверяем параметр функцией popUpToggle
-    validProfileBlock.disableSubmitButton(); //кнопка submit в состояние disabled после обнуления 
 }
 
 const addElementCard = (element) => { /// Добавление карточки в DOM ///
@@ -87,25 +86,28 @@ const addNewCards = (evt) => { /// Добавление новой карточ�
     const card = createImageCard(popupInputTitle.value, popupInputImage.value);
     addElementCard(card);
     closePopup(popupImage);
-    popupImageForm.reset(); // обнуляем значения формы после добавления карточки
-    validNewCards.disableSubmitButton(); //кнопка submit в состояние disabled после обнуления 
 }
 
  function openFullSizeImage(link, title) {
     image.alt = title.textContent;
     image.src = link.src;
     imageTitle.textContent = title.textContent;
-    this._showPopup(imagePopup);
+    showPopup(imagePopup);
 }
 
 /// Обработчкики закрытия/открытия Popup-ов ///
 openPopupProfileBtn.addEventListener('click', function() {
     showPopup(popupProfileBlock);
+    validProfileBlock.disableSubmitButton(); //кнопка submit в состояние disabled после обнуления 
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
 });
 
-openPopupImageBtn.addEventListener('click', () => showPopup(popupImage)); 
+openPopupImageBtn.addEventListener('click', () => {
+    showPopup(popupImage);
+    popupImageForm.reset(); // обнуляем значения формы после добавления карточки 
+    validNewCards.disableSubmitButton(); //кнопка submit в состояние disabled после обнуления 
+}); 
 
 /// Обработчики submit длая Popup-ов /// 
 popupForm.addEventListener('submit', addInformation);
