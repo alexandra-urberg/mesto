@@ -4,6 +4,7 @@ export class FormValidator {
     this._popupForm = popupForm;
     this._submitButton = this._popupForm.querySelector(this._validSelectors.submitButtonSelector);
     this._inputList = Array.from(this._popupForm.querySelectorAll(this._validSelectors.inputSelector));
+    this._errorList = Array.from(document.querySelectorAll('.input-error'));
   }
 
   _showInputError(inputElement, errorMessage) { ////метод добавляющая класс с ошибкой
@@ -49,7 +50,6 @@ export class FormValidator {
   }
 
   _setEventListeners() { //метод добавление обработчиков всем полям форм
-    this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
@@ -58,8 +58,18 @@ export class FormValidator {
     });
   }
 
-  enableValidation() { ////метод добавление обработчиков всем формам
+  enableValidation() { //метод добавление обработчиков всем формам
     this._popupForm.addEventListener('submit', (evt) => evt.preventDefault());
     this._setEventListeners();
+  }
+
+  removeErrors() { //метод удаляющий выявленные ошибки при закрытие popup через esc, overlay и кнопку "крестик"
+    this._inputList.forEach((inputElement) => {
+      inputElement.classList.remove('popup__input-error_active');
+    });
+    this._errorList.forEach((errorElement) => {
+      errorElement.classList.remove('popup__input-error');
+      errorElement.textContent = '';
+    });
   }
 }
