@@ -1,22 +1,22 @@
 export default class Popup {
     constructor(popupSelector) {
         this._popup = popupSelector; // ссылка на определенный попап
+        this._closeEscEvent = this._handleEscClose.bind(this);
     }
 
     open() { // метод открытия popup окна 
         this._popup.classList.add('popup_is-opened');
-        document.addEventListener('keydown', this._handleEscClose);
+        document.addEventListener('keydown', this._closeEscEvent);
     }
     
     close() { // метод закрытия popup окна 
         this._popup.classList.remove('popup_is-opened');
-        document.removeEventListener('keydown', this._handleEscClose);
+        document.removeEventListener('keydown', this._closeEscEvent);
     }
 
     _handleEscClose = (event) => { /// метод закрытие popup по нажатию кнопки Esc (почему нужно навешивать его на открытие и закрытие)
         if(event.key === "Escape") {
-            const deleteClass = document.querySelector('.popup_is-opened');
-            this.close(deleteClass);
+            this.close();
         }
    }
 
