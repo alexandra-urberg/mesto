@@ -3,7 +3,6 @@ import Popup from './Popup.js';
 export default class PopupWithForm extends Popup {
     constructor({popupSelector, submithFormHandler}) {
         super(popupSelector);
-        this._popup = popupSelector;
         this._submithFormHandler = submithFormHandler; //ссылка на обработчик сабмита формы
         this._form = this._popup.querySelector('.popup__form-container'); //ссылка на форму определенного попапа
     }
