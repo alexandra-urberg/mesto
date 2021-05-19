@@ -1,15 +1,14 @@
 export default class Section {
-    constructor({items, renderer}, popupImageContainer) {
-        this._items = items; // ссылка на обьект
-        this._renderer = renderer; //ссылка на функцию, которая отвечает за создание и отрисовку данных на странице
-        this._сontainer = popupImageContainer; //ссылка на переменную в которую будем добавлять карточки
+    constructor(renderer, popupImageContainer) {
+        this._renderer = renderer;
+        this._container = popupImageContainer; //ссылка на переменную в которую будем добавлять карточки
+    }
+    
+    addItem(element) { //метод добавления карточку в начало списка
+        this._container.prepend(element);
     }
 
-    addItem(element) { //метод добавляющий карточки в DOM
-        this._сontainer.prepend(element);
-    }
-
-    renderItems() { //метод добавляющий карточки на страничку
-        this._items.forEach(item => this._renderer(item));
-    }
+    renderItems(cards) {
+        cards.forEach(item => this._renderer(item));
+    };
 }
