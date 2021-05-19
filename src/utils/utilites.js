@@ -1,30 +1,3 @@
-export const initialCards = [
-  { 
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  { 
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  { 
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  { 
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  { 
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  { 
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 export const validSelectors = {
   formSelector: document.querySelectorAll('.popup__form-container'), ///формы блоков popup
   inputSelector: '.popup__input', // инпуты блоков popup
@@ -33,7 +6,6 @@ export const validSelectors = {
   inputErrorClass: 'popup__input-error_active', //класс добавляемый в input при ошибке валидации
   errorClass: 'popup__input-error' //класс добавляемый в span для вывода ошибки при валидации
 }
-
 /// Popup Profile ///
 export const openPopupProfileBtn = document.querySelector('#popup-profile__open-button'); //кнопка, вызывающая Popup Profile окно
 export const popupProfileBlock = document.querySelector('#popup-profile'); //блок Popup Profile
@@ -44,8 +16,16 @@ export const popupForm = document.querySelector('#popup__form'); //форма б
 export const openPopupImageBtn = document.querySelector('#popup-image__open-button'); //кнопка открывающая блок Popup Image
 export const popupImage = document.querySelector('#popup-image'); // блок Popup Image
 export const popupImageForm = document.querySelector('#popup__image-form'); // переменная куда будет вноиться информаци о картинках и ссылки
+//Popup Avatar//
+export const popupEditAvatar = document.querySelector('#popup-avatar'); // блок Popup Avatar
+export const openButtonPopupAatar = document.querySelector('#profile__avatar-button'); //кнопка, вызывающая Popup Porofile-avatar
 /// Template ///
 export const template = document.querySelector('#template'); //template 
 export const popupImageContainer = document.querySelector('#template__container'); // переменная в которую будем добавлять карточки
+export const openButtonPopupDelete = document.querySelector('#element__trash');
+export const templateDeleteButton = document.querySelector('#element__trash');
 /// Full-size picture ///
 export const imagePopup = document.querySelector('#image'); // блок image (увеличение фотографий)
+/// Delete Popup ///
+export const popupDeleteCard = document.querySelector('#popup-card-delete');// блок попапа для удаления карточки
+export const popupDeleteButton = popupDeleteCard.querySelector('#popup-card-delete__btn'); //кноака "да" для удаления карточки
