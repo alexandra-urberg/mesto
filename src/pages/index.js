@@ -79,7 +79,7 @@ function  createCard(data) {
 function addLikes(id, item) {//функция добавляет лайк
     api.addLike(id)
     .then(data => {
-      item.updateLike(data);
+      item.countLike(data);
     })
     .catch((err) => console.log(err));
 }
@@ -87,7 +87,7 @@ function addLikes(id, item) {//функция добавляет лайк
 function rejectLike(id, item) {//функиця убирает лайк
     api.deleteLike(id)
     .then(data => {
-        item.updateLike(data);
+        item.countLike(data);
     })
     .catch((err) => console.log(err));
 }
