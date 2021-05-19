@@ -1,4 +1,4 @@
-.popup__save-button {
+.popup-card_delete__button {
     height: 50px;
     align-items: center;
     margin-top: 18px;
@@ -16,12 +16,12 @@
     margin: 0;
 }
 
-.popup__save-button:hover {
+.popup-card_delete__button:hover {
     opacity: 0.8;
 }
 
 @media screen and (min-width: 320px) and (max-width: 500px) {
-    .popup__save-button {
+    .popup-card_delete__button {
         height: 46px;
         margin-top: 15px;
 
