@@ -68,7 +68,7 @@ export class Card {
         });
     }
 
-    updateLike(data) {
+    countLike(data) {
         this._cardLikesPlace.textContent = data.likes.length;// добавляем/удаляем свой лайк(+1/-1) в элемент-счетчик
     }
 }
