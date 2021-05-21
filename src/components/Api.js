@@ -6,17 +6,19 @@ export default class Api {
         this.deleteLike = this.deleteLike.bind(this);
     }
 
+    _handleResponse(res) {
+        if(res.ok) {
+            return res.json();
+        }
+        return Promise.reject('We have found an error.' `Error: ${res.status}`);
+    }
+
     getPersonalInformation() { //метод для вытаскивания информации с сервера о user/users
         return fetch('https://mesto.nomoreparties.co/v1/cohort-24/users/me', {
             method: 'GET',
             headers: this._headers
         })
-        .then((res) => {
-            if(res.ok) {
-                return res.json()
-            }
-            return Promise.reject('We have found an error');
-        })
+        .then(this._handleResponse);
     }
 
     editPersonalProfile(data) { // метод для измения инфомуции о user и сохранении его на сервере
@@ -28,12 +30,7 @@ export default class Api {
                 about: data.about
             })
         })
-        .then((res) => {
-            if(res.ok) {
-                return res.json()
-            };
-            return Promise.reject('We have found an error');
-        })
+        .then(this._handleResponse);
     }
 
     editAvatar(link) { // метод для измения avatar оf user и сохранении его на сервере
@@ -44,12 +41,7 @@ export default class Api {
                 avatar: link
             })
         })
-        .then((res) => {
-            if(res.ok) {
-                return res.json()
-            };
-            return Promise.reject('We have found an error');
-        })
+        .then(this._handleResponse);
     }
 
     getInitialCards() { //метод достаюзий все карточки с фотографиями из сервера 
@@ -57,12 +49,7 @@ export default class Api {
             method: 'GET',
             headers: this._headers
         })
-        .then((res) => {
-            if(res.ok) {
-                return res.json()
-            }
-            return Promise.reject('We have found an error');
-        })
+        .then(this._handleResponse);
     }
 
     addNewCard(data) { // метод добаляющий новую карточку на сервер 
@@ -74,12 +61,7 @@ export default class Api {
                 link: data.link
             })
         })
-        .then((res) => {
-            if(res.ok) {
-                return res.json()
-            };
-            return Promise.reject('We have found an error');
-        })
+        .then(this._handleResponse);
     }
 
     addLike(id) { // метод постановки лайка
@@ -87,12 +69,7 @@ export default class Api {
             method: 'PUT',
             headers: this._headers
         })
-        .then((res) => {
-            if(res.ok) {
-                return res.json()
-            };
-            return Promise.reject('We have found an error');
-        })
+        .then(this._handleResponse);
     }
 
     deleteLike(id) { // метод удаления лайка 
@@ -100,12 +77,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers
         })
-        .then((res) => {
-            if(res.ok) {
-                return res.json()
-            };
-            return Promise.reject('We have found an error');
-        })
+        .then(this._handleResponse);
     }
 
     deleteCard(id) { // метод уделения карточки с сервера
@@ -113,11 +85,6 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers
         })
-        .then((res) => {
-            if(res.ok) {
-                return res.json()
-            };
-            return Promise.reject('We have found an error');
-        })
+        .then(this._handleResponse);
     }
 }
