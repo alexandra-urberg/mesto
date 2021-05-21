@@ -23,8 +23,6 @@ export const popupAvatarForm = popupEditAvatar.querySelector('#popup__avatar-for
 /// Template ///
 export const template = document.querySelector('#template'); //template 
 export const popupImageContainer = document.querySelector('#template__container'); // переменная в которую будем добавлять карточки
-export const openButtonPopupDelete = document.querySelector('#element__trash');
-export const templateDeleteButton = document.querySelector('#element__trash');
 /// Full-size picture ///
 export const imagePopup = document.querySelector('#image'); // блок image (увеличение фотографий)
 /// Delete Popup ///
