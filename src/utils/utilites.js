@@ -19,6 +19,7 @@ export const popupImageForm = document.querySelector('#popup__image-form'); // �
 //Popup Avatar//
 export const popupEditAvatar = document.querySelector('#popup-avatar'); // блок Popup Avatar
 export const openButtonPopupAatar = document.querySelector('#profile__avatar-button'); //кнопка, вызывающая Popup Porofile-avatar
+export const popupAvatarForm = popupEditAvatar.querySelector('#popup__avatar-form');
 /// Template ///
 export const template = document.querySelector('#template'); //template 
 export const popupImageContainer = document.querySelector('#template__container'); // переменная в которую будем добавлять карточки
@@ -28,4 +29,3 @@ export const templateDeleteButton = document.querySelector('#element__trash');
 export const imagePopup = document.querySelector('#image'); // блок image (увеличение фотографий)
 /// Delete Popup ///
 export const popupDeleteCard = document.querySelector('#popup-card-delete');// блок попапа для удаления карточки
-export const popupDeleteButton = popupDeleteCard.querySelector('#popup-card-delete__btn'); //кноака "да" для удаления карточки
