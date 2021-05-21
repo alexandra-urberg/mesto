@@ -108,6 +108,7 @@ function addLikes(id, item) {
     .addLike(id)
     .then((data) => {
       item.countLike(data);
+      item.addRemoveBlackHearts();
     })
     .catch((err) => console.log(err));
 }
@@ -118,6 +119,7 @@ function rejectLike(id, item) {
     .deleteLike(id)
     .then((data) => {
       item.countLike(data);
+      item.addRemoveBlackHearts();
     })
     .catch((err) => console.log(err));
 }
@@ -144,7 +146,7 @@ const deleteCard = new PopupWithSubmith(popupDeleteCard, (id, card) => {
     .deleteCard(id)
     .then(() => deleteCard.close())
     .catch((err) => console.log(err))
-    .finally(() => setTimeout(card.remove(), 10000));
+    .finally(() => card.remove());
 });
 
 //проверяем валидность форм
