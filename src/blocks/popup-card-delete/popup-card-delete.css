@@ -1,6 +1,0 @@
-.popup-card-delete {
-    display: grid;
-    grid-template-rows: fit-content(181px);
-    box-sizing: border-box;
-    row-gap: 38px;
-}
