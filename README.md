@@ -1,24 +1,29 @@
-# Проект 4-9: Место
-24 поток
+# Mesto JS(sprint 4-9)
+This is an application written in JavaScript (OOP and asynchronous programming).
 
-Выполнила: Степанова А.А.
 
-### Обзор
+### Overview
 
-* [Ссылка на выполненный проект](https://alexandra-stepanova.github.io/mesto/)
+* [GH-pages](https://alexandra-stepanova.github.io/mesto/)
 
-**Figma**
+**Figma Layout example**
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* [Link](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
-Данный проект разрабатывался как для большого, так и для малого экрана. Выполнен по БЭМ. Сделана доступность для людей с ограниченными возможностями. Проект отображается в Safari, Firefox, Google Chrome или Yandex Browser. В проекте присутствуют: изображения, всплывающая форма, которая сохраняет изменные Имя и вид деятельности на странице. Весь код CSS находится в Nested файловой структуре по БЭМ.
+This is an application written in JavaScript. The project is a service like instagram, where user can add an image, add or delete likes to the other users images, change/add user’s avatar and information. 
+The project includes: images, pop-up forms that save a changeable name and user’s activity, as well as an avatar. The input data (like image or description) is validated.
+All CSS code is in Nested BEM file structure.
 
-Основные технологии используемые в данном проекте:
+## The following stack was used during development of the project:
 
-1. HTML, CSS, JS: семантика и валидность html и CSS разметки
-2. Git, Flex;
-3. БЭМ;
-4. Nested файловая структура по БЭМ;
-5. Адаптаця под размер устройств от 320px;
-6. ООП;
-7. Асинхронное программирование.
+1. HTML;
+2. CSS;
+3. JS: semantics and validity;
+4. Git, Flex;
+5. BEM;
+6. Mobile adaptive website;
+7. ООP;
+8. Asynchronous programming.
+
+Stream 24 
+Prepared by Alexandra Stepanova 
